@@ -303,7 +303,7 @@ export default function SellerPage() {
 
                   <div className="mt-5 space-y-3">
                     {selectedThread.messages.map((message) => (
-                      <div key={`${message.author}-${message.sentAt}`} className="rounded-2xl bg-white p-4">
+                      <div key={message.id} className="rounded-2xl bg-white p-4">
                         <div className="flex items-center justify-between gap-3">
                           <p className="text-[13px] font-medium text-charcoal">{message.author}</p>
                           <span className="text-[11px] text-warm-gray">{message.sentAt}</span>

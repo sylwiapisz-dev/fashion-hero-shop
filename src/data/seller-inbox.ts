@@ -9,6 +9,7 @@ export interface SellerPanelOrder {
 }
 
 export interface SellerPanelMessage {
+  id: string;
   author: string;
   role: "Kupująca" | "Sprzedawca" | "System";
   sentAt: string;
@@ -108,12 +109,14 @@ export const sellerInboxThreads: SellerInboxThread[] = [
       "Cześć Anno! Paczka do zamówienia #4821 została już nadana 21.06. Zaraz po aktywacji numeru śledzenia dostaniesz automatyczne powiadomienie w FashionHero.",
     messages: [
       {
+        id: "thread-4821-message-1",
         author: "Anna Kowalska",
         role: "Kupująca",
         sentAt: "Dziś, 09:14",
         body: "Cześć, czy możesz potwierdzić wysyłkę i numer śledzenia dla zamówienia #4821?",
       },
       {
+        id: "thread-4821-message-2",
         author: "System FashionHero",
         role: "System",
         sentAt: "Dziś, 09:16",
@@ -134,6 +137,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
       "Dzień dobry Mario! Numer śledzenia pojawi się automatycznie zaraz po zeskanowaniu przesyłki przez kuriera. Wyślę Ci też powiadomienie w inboxie FashionHero.",
     messages: [
       {
+        id: "thread-4742-message-1",
         author: "Maria Nowak",
         role: "Kupująca",
         sentAt: "Dziś, 08:41",
@@ -154,12 +158,14 @@ export const sellerInboxThreads: SellerInboxThread[] = [
       "Karolino, do tej spódnicy dobrze pasuje nasza bluzka lniana w tym samym odcieniu. Mogę wysłać Ci automatyczną rekomendację po nadaniu paczki.",
     messages: [
       {
+        id: "thread-4698-message-1",
         author: "Karolina Wiśniewska",
         role: "Kupująca",
         sentAt: "Wczoraj, 18:22",
         body: "Jeśli masz coś pasującego do tej spódnicy, chętnie dokupię w tym samym stylu.",
       },
       {
+        id: "thread-4698-message-2",
         author: "Sylwia Pisz",
         role: "Sprzedawca",
         sentAt: "Wczoraj, 18:37",
@@ -180,6 +186,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
       "Zofio, już wysyłam instrukcję zwrotu. Po jej otwarciu kupująca dostanie też automatyczne przypomnienie o kolejnych krokach.",
     messages: [
       {
+        id: "thread-4521-message-1",
         author: "Zofia Dąbrowska",
         role: "Kupująca",
         sentAt: "18.06, 12:05",
