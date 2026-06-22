@@ -51,11 +51,14 @@ export default function SellerPage() {
   const [selectedRuleId, setSelectedRuleId] = useState(initialRule.id);
   const [selectedNotificationId, setSelectedNotificationId] = useState(initialNotification.id);
 
-  const selectedOrder = sellerOrders.find((order) => order.id === selectedOrderId) ?? initialOrder;
+  const activeOrderId = sellerOrders.some((order) => order.id === selectedOrderId)
+    ? selectedOrderId
+    : initialOrder.id;
+  const selectedOrder = sellerOrders.find((order) => order.id === activeOrderId) ?? initialOrder;
 
   const orderThreads = useMemo(
-    () => threads.filter((thread) => thread.orderId === selectedOrderId),
-    [selectedOrderId, threads]
+    () => threads.filter((thread) => thread.orderId === activeOrderId),
+    [activeOrderId, threads]
   );
   const selectedThread =
     orderThreads.find((thread) => thread.id === selectedThreadId) ??
@@ -64,8 +67,8 @@ export default function SellerPage() {
     initialThread;
 
   const orderNotifications = useMemo(
-    () => sellerNotificationEvents.filter((notification) => notification.orderId === selectedOrderId),
-    [selectedOrderId]
+    () => sellerNotificationEvents.filter((notification) => notification.orderId === activeOrderId),
+    [activeOrderId]
   );
   const selectedNotification =
     orderNotifications.find((notification) => notification.id === selectedNotificationId) ??
@@ -196,7 +199,7 @@ export default function SellerPage() {
           <div className="mt-4 space-y-3">
             {sellerOrders.map((order) => {
               const orderThreadCount = threads.filter((thread) => thread.orderId === order.id).length;
-              const isSelected = order.id === selectedOrderId;
+              const isSelected = order.id === activeOrderId;
 
               return (
                 <button
