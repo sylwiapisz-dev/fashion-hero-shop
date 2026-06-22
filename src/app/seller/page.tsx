@@ -270,7 +270,7 @@ export default function SellerPage() {
                     onClick={() => handleThreadSelect(thread.id)}
                     className={cn(
                       "w-full rounded-2xl border px-4 py-4 text-left transition-colors",
-                      selectedThread?.id === thread.id
+                      selectedThread.id === thread.id
                         ? "border-charcoal bg-cream-light"
                         : "border-black/10 hover:border-charcoal/40"
                     )}
@@ -372,7 +372,7 @@ export default function SellerPage() {
                   onClick={() => setSelectedRuleId(rule.id)}
                   className={cn(
                     "w-full rounded-2xl border px-4 py-4 text-left transition-colors",
-                    selectedRule?.id === rule.id
+                    selectedRule.id === rule.id
                       ? "border-charcoal bg-cream-light"
                       : "border-black/10 hover:border-charcoal/40"
                   )}
@@ -445,7 +445,7 @@ export default function SellerPage() {
                   onClick={() => setSelectedNotificationId(notification.id)}
                   className={cn(
                     "w-full rounded-2xl border px-4 py-4 text-left transition-colors",
-                    selectedNotification?.id === notification.id
+                    selectedNotification.id === notification.id
                       ? "border-charcoal bg-cream-light"
                       : "border-black/10 hover:border-charcoal/40"
                   )}
