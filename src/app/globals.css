@@ -41,6 +41,10 @@
   --color-charcoal-light: #333333;
   --color-warm-gray: #6b6b6b;
   --color-footer-bg: #212121;
+  --color-sage-mist: #e7ecdf;
+  --color-sage-border: #d4dbc8;
+  --color-blush-mist: #f4ebe6;
+  --color-blush-border: #e5d5cb;
 }
 
 :root {
