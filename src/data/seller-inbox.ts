@@ -12,7 +12,7 @@ export interface SellerPanelMessage {
   id: string;
   author: string;
   role: "Kupująca" | "Sprzedawca" | "System";
-  sentAt: string;
+  sentAtLabel: string;
   body: string;
 }
 
@@ -22,7 +22,7 @@ export interface SellerInboxThread {
   customer: string;
   subject: string;
   preview: string;
-  sentAt: string;
+  sentAtLabel: string;
   unread: boolean;
   tag: string;
   suggestedReply: string;
@@ -44,7 +44,7 @@ export interface SellerNotificationEvent {
   orderId: string;
   customer: string;
   title: string;
-  sentAt: string;
+  sentAtLabel: string;
   channel: "E-mail" | "Inbox kupującej";
   summary: string;
   body: string;
@@ -102,7 +102,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
     customer: "Anna Kowalska",
     subject: "Czy paczka jest już nadana?",
     preview: "Cześć, czy możesz potwierdzić wysyłkę i numer śledzenia dla mojego zamówienia?",
-    sentAt: "Dziś, 09:14",
+    sentAtLabel: "Dziś, 09:14",
     unread: true,
     tag: "Wysyłka",
     suggestedReply:
@@ -112,14 +112,14 @@ export const sellerInboxThreads: SellerInboxThread[] = [
         id: "thread-4821-message-1",
         author: "Anna Kowalska",
         role: "Kupująca",
-        sentAt: "Dziś, 09:14",
+        sentAtLabel: "Dziś, 09:14",
         body: "Cześć, czy możesz potwierdzić wysyłkę i numer śledzenia dla zamówienia #4821?",
       },
       {
         id: "thread-4821-message-2",
         author: "System FashionHero",
         role: "System",
-        sentAt: "Dziś, 09:16",
+        sentAtLabel: "Dziś, 09:16",
         body: "Do tej rozmowy możesz dodać automatyczne potwierdzenie nadania, gdy przewoźnik aktywuje tracking.",
       },
     ],
@@ -130,7 +130,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
     customer: "Maria Nowak",
     subject: "Nie widzę linku do śledzenia",
     preview: "Czy numer przesyłki pojawi się jeszcze dziś? Chciałabym odebrać paczkę przed weekendem.",
-    sentAt: "Dziś, 08:41",
+    sentAtLabel: "Dziś, 08:41",
     unread: true,
     tag: "Tracking",
     suggestedReply:
@@ -140,7 +140,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
         id: "thread-4742-message-1",
         author: "Maria Nowak",
         role: "Kupująca",
-        sentAt: "Dziś, 08:41",
+        sentAtLabel: "Dziś, 08:41",
         body: "Dzień dobry, nie widzę jeszcze linku do śledzenia zamówienia #4742. Czy paczka wyjdzie dziś?",
       },
     ],
@@ -151,7 +151,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
     customer: "Karolina Wiśniewska",
     subject: "Czy mogę dobrać pasującą górę?",
     preview: "Jeśli masz coś do tej spódnicy, chętnie dokupię w tym samym stylu.",
-    sentAt: "Wczoraj, 18:22",
+    sentAtLabel: "Wczoraj, 18:22",
     unread: false,
     tag: "Upsell",
     suggestedReply:
@@ -161,14 +161,14 @@ export const sellerInboxThreads: SellerInboxThread[] = [
         id: "thread-4698-message-1",
         author: "Karolina Wiśniewska",
         role: "Kupująca",
-        sentAt: "Wczoraj, 18:22",
+        sentAtLabel: "Wczoraj, 18:22",
         body: "Jeśli masz coś pasującego do tej spódnicy, chętnie dokupię w tym samym stylu.",
       },
       {
         id: "thread-4698-message-2",
         author: "Sylwia Pisz",
         role: "Sprzedawca",
-        sentAt: "Wczoraj, 18:37",
+        sentAtLabel: "Wczoraj, 18:37",
         body: "Jasne, przygotuję rekomendację w automatycznym powiadomieniu po wysyłce.",
       },
     ],
@@ -179,7 +179,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
     customer: "Zofia Dąbrowska",
     subject: "Chcę rozpocząć zwrot",
     preview: "Sukienka jest piękna, ale rozmiar XS okazał się zbyt mały. Jak mogę zgłosić zwrot?",
-    sentAt: "18.06, 12:05",
+    sentAtLabel: "18.06, 12:05",
     unread: false,
     tag: "Zwrot",
     suggestedReply:
@@ -189,7 +189,7 @@ export const sellerInboxThreads: SellerInboxThread[] = [
         id: "thread-4521-message-1",
         author: "Zofia Dąbrowska",
         role: "Kupująca",
-        sentAt: "18.06, 12:05",
+        sentAtLabel: "18.06, 12:05",
         body: "Sukienka jest piękna, ale rozmiar XS okazał się zbyt mały. Jak mogę zgłosić zwrot?",
       },
     ],
@@ -245,7 +245,7 @@ export const sellerNotificationEvents: SellerNotificationEvent[] = [
     orderId: "#4821",
     customer: "Anna Kowalska",
     title: "Powiadomienie o nadaniu przesyłki",
-    sentAt: "Dziś, 10:02",
+    sentAtLabel: "Dziś, 10:02",
     channel: "Inbox kupującej",
     summary: "Kupująca dostała numer zamówienia, status wysyłki i rekomendację pasującego dodatku.",
     body:
@@ -256,7 +256,7 @@ export const sellerNotificationEvents: SellerNotificationEvent[] = [
     orderId: "#4742",
     customer: "Maria Nowak",
     title: "Automatyczna odpowiedź o śledzeniu",
-    sentAt: "Dziś, 08:55",
+    sentAtLabel: "Dziś, 08:55",
     channel: "E-mail",
     summary: "System potwierdził przygotowanie wysyłki i zapowiedział dosłanie numeru śledzenia.",
     body:
@@ -267,7 +267,7 @@ export const sellerNotificationEvents: SellerNotificationEvent[] = [
     orderId: "#4698",
     customer: "Karolina Wiśniewska",
     title: "Rekomendacja do istniejącego zamówienia",
-    sentAt: "Wczoraj, 18:40",
+    sentAtLabel: "Wczoraj, 18:40",
     channel: "Inbox kupującej",
     summary: "Kupująca dostała propozycję dobrania pasującej bluzki do zamówionej spódnicy.",
     body:
@@ -278,7 +278,7 @@ export const sellerNotificationEvents: SellerNotificationEvent[] = [
     orderId: "#4521",
     customer: "Zofia Dąbrowska",
     title: "Instrukcja zwrotu",
-    sentAt: "18.06, 12:18",
+    sentAtLabel: "18.06, 12:18",
     channel: "E-mail",
     summary: "Kupująca otrzymała kroki zwrotu i przypomnienie o terminie odesłania produktu.",
     body:

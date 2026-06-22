@@ -18,14 +18,15 @@ import {
 const statusClasses = {
   "Nowe": "bg-white text-charcoal border-black/15",
   "Wysłane": "bg-charcoal text-white border-charcoal",
-  "W trakcie wysyłki": "bg-[#e7ecdf] text-charcoal border-[#d4dbc8]",
-  "Zwrot": "bg-[#f4ebe6] text-charcoal border-[#e5d5cb]",
+  "W trakcie wysyłki": "bg-sage-mist text-charcoal border-sage-border",
+  "Zwrot": "bg-blush-mist text-charcoal border-blush-border",
 } as const;
 
 const initialOrder = sellerOrders[0]!;
 const initialThread = sellerInboxThreads[0]!;
 const initialRule = sellerAutomationRules[0]!;
 const initialNotification = sellerNotificationEvents[0]!;
+const inboxLayoutColumns = "lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]";
 
 function getUnreadCount(threads: SellerInboxThread[]) {
   return threads.filter((thread) => thread.unread).length;
@@ -36,6 +37,7 @@ function getConversationLabel(count: number) {
   const lastTwoDigits = count % 100;
   const lastDigit = count % 10;
 
+  // W języku polskim 2-4 mają formę "rozmowy", z wyjątkiem 12-14.
   if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)) {
     return `${count} aktywne rozmowy`;
   }
@@ -264,7 +266,7 @@ export default function SellerPage() {
               </Button>
             </div>
 
-            <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <div className={cn("mt-5 grid gap-4", inboxLayoutColumns)}>
               <div className="space-y-3">
                 {orderThreads.map((thread) => (
                   <button
@@ -285,7 +287,7 @@ export default function SellerPage() {
                       )}
                     </div>
                     <p className="mt-1 text-[12px] text-warm-gray">
-                      {thread.customer} · {thread.sentAt}
+                      {thread.customer} · {thread.sentAtLabel}
                     </p>
                     <p className="mt-3 text-[13px] text-charcoal/80">{thread.preview}</p>
                     <span className="mt-3 inline-flex rounded-full bg-cream px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.6px] text-charcoal">
@@ -316,7 +318,7 @@ export default function SellerPage() {
                       <div key={message.id} className="rounded-2xl bg-white p-4">
                         <div className="flex items-center justify-between gap-3">
                           <p className="text-[13px] font-medium text-charcoal">{message.author}</p>
-                          <span className="text-[11px] text-warm-gray">{message.sentAt}</span>
+                          <span className="text-[11px] text-warm-gray">{message.sentAtLabel}</span>
                         </div>
                         <p className="mt-1 text-[11px] uppercase tracking-[0.6px] text-warm-gray">
                           {message.role}
@@ -455,7 +457,7 @@ export default function SellerPage() {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-[14px] font-medium text-charcoal">{notification.title}</p>
-                    <span className="text-[11px] text-warm-gray">{notification.sentAt}</span>
+                    <span className="text-[11px] text-warm-gray">{notification.sentAtLabel}</span>
                   </div>
                   <p className="mt-2 text-[12px] text-warm-gray">
                     {notification.customer} · {notification.channel}
@@ -474,7 +476,7 @@ export default function SellerPage() {
                   {selectedNotification.title}
                 </h3>
                 <p className="mt-2 text-[12px] text-warm-gray">
-                  {selectedNotification.channel} · {selectedNotification.sentAt}
+                  {selectedNotification.channel} · {selectedNotification.sentAtLabel}
                 </p>
                 <p className="mt-4 text-[13px] leading-6 text-charcoal/85">
                   {selectedNotification.body}
