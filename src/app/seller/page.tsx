@@ -33,7 +33,14 @@ function getUnreadCount(threads: SellerInboxThread[]) {
 
 function getConversationLabel(count: number) {
   if (count === 1) return "1 aktywna rozmowa";
-  return `${count} aktywne rozmowy`;
+  const lastTwoDigits = count % 100;
+  const lastDigit = count % 10;
+
+  if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 12 || lastTwoDigits > 14)) {
+    return `${count} aktywne rozmowy`;
+  }
+
+  return `${count} aktywnych rozmów`;
 }
 
 export default function SellerPage() {
