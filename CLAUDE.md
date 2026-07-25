@@ -37,7 +37,7 @@ Extraction artifacts and screenshots live in `docs/research/` and `docs/design-r
 Read these together to understand how a page renders:
 
 - **`src/app/layout.tsx`** wraps everything in **`<Shell>`** (`src/components/shell.tsx`), which nests the client-side context providers in a fixed order: `AuthProvider → CartProvider → WishlistProvider → QuickViewProvider`, then renders `AnnouncementBar` / `Header` / `main` / `Footer`. All cross-page UI state (cart drawer, wishlist, quick-view modal, auth) flows through these providers via `useCart()`, `useWishlist()`, etc. — **not** a store library.
-  - State is **in-memory React state only** — nothing is persisted to `localStorage` or a backend. Adding an item opens the cart drawer as a side effect. This is intentional for a demo/template.
+  - There is **no backend**. Cart and wishlist persist to `localStorage` (keys `stepforward-cart` / `stepforward-wishlist`); the cart stores lightweight refs (`productId` / `colorHex` / `size` / `quantity`) and rehydrates from `src/data/products.ts` on load, so prices stay fresh and removed products drop out. Adding an item opens the cart drawer as a side effect.
 - **Data is hardcoded** in `src/data/` (`products.ts`, `collections.ts`, `sellers.ts`). There is no API or database — pages import these modules directly. TARGET.md notes students are expected to swap this for a real API.
 - **Types** are centralized in `src/types/` (`Product`, `ProductColor`, `CartItem`, `Seller`, …); import via the `@/*` alias.
 - **Routes** (`src/app/`): `page.tsx` (home), `collections/[slug]` (listing), `products/[slug]` (detail), `checkout`, `wishlist`, `about`, `account/{login,register}`.
